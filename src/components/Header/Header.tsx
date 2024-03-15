@@ -11,7 +11,7 @@ import { IoIosSearch } from "react-icons/io";
 const Header = () => {
   return (
     <header id="header">
-      <div id="logo-search-conatainer">
+      <div id="logo-search-container">
         <div id="logo">
           <Image
             alt="Logo do WebApp"
@@ -19,12 +19,12 @@ const Header = () => {
             width={30}
             height={30}
           />
-          CoreNotes
+          <h1>CoreNotes</h1>
         </div>
         <div id="search">
           <form id="search-annotations">
             <input type="text" placeholder="Pesquisar notas" />
-            <button type="submit">
+            <button type="submit" aria-label="Fechar">
               <IoIosSearch />
             </button>
           </form>

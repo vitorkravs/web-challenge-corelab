@@ -9,7 +9,7 @@
   width: 100%;
   height: 57px;
 
-  #logo-search-conatainer {
+  #logo-search-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,6 +21,11 @@
       justify-content: center;
       gap: 0.5rem;
       color: #455a64;
+
+      h1 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
     }
 
     #search {
@@ -38,6 +43,7 @@
           color: #9e9e9e;
           width: 90%;
           height: 100%;
+          font-weight: 500;
         }
 
         button {
@@ -54,7 +60,7 @@
 
 @media (min-width: 768px) {
   #header {
-    #logo-search-conatainer {
+    #logo-search-container {
       gap: 1.5rem;
 
       #search {
