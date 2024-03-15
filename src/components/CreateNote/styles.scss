@@ -44,9 +44,11 @@
         text-align: end;
         width: 20%;
 
-        .toggle-favorite {
+        .favorite,
+        .normal {
           color: #455a64;
           font-size: 1.8rem;
+          background-clip: content-box;
         }
 
         .toggle-favorite:hover {
@@ -55,12 +57,34 @@
       }
     }
 
-    #create-annotation-input {
-      padding: 0.5rem;
+    #create-annotation-textarea {
+      padding: 0.5rem 1rem;
       margin-bottom: 0.5rem;
       border: none;
       font-size: 1rem;
       resize: none;
+    }
+    #create-note-btn-container {
+      display: flex;
+      justify-content: end;
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+
+      #create-note-btn {
+        color: #333333;
+        padding: 0.5rem 1rem;
+        border: none;
+        font-weight: 600;
+        border-radius: 1.5rem;
+        background-color: $background;
+        transition: 0.5s;
+      }
+
+      #create-note-btn:hover {
+        color: $background;
+        background-color: #333333;
+        cursor: pointer;
+      }
     }
   }
 }
