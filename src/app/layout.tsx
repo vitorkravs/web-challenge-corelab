@@ -1,5 +1,11 @@
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 import type { Metadata } from "next";
-import "../global.css";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "CoreNotes",
@@ -13,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br" className={inter.className}>
       <body>{children}</body>
     </html>
   );
