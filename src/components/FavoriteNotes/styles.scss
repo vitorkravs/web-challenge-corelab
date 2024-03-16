@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+#favorite-notes-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+
+  #title-favorite-notes {
+    width: 100%;
+    text-align: justify;
+    color: $color-text-title;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .favorite-notes {
+    background-color: $background-secundary;
+  }
+}
+
+@media (min-width: 768px) {
+  #favorite-notes-container {
+    padding: 1rem 6rem;
+  }
+}
