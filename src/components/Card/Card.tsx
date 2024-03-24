@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 import { IoMdStarOutline } from "react-icons/io";
 import { LiaStarSolid } from "react-icons/lia";
 
@@ -10,7 +12,7 @@ interface CardProps {
 const Card = ({ title, annotation, isFavorite }: CardProps) => {
   console.log(title, annotation, isFavorite);
   return (
-    <div className="favorite-notes">
+    <div className="card-notes">
       <form>
         <div>
           <input value={title} readOnly />
