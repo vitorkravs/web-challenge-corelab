@@ -1,6 +1,6 @@
 import CreateNote from "@/components/CreateNote/CreateNote";
 import Header from "@/components/Header/Header";
-import FavoriteNotes from "@/components/FavoriteNotes/FavoriteNotes";
+import ShowNotes from "@/components/ShowNotes/ShowNotes";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
       <main>
         <CreateNote />
-        <FavoriteNotes />
+        <ShowNotes />
       </main>
     </>
   );
