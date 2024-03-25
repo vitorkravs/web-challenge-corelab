@@ -28,7 +28,7 @@ const Card = ({
   annotation: initialAnnotation,
   isFavorite: initialIsFavorite,
 }: CardProps) => {
-  const { updateNote, updateIsFavorite } = useNotes();
+  const { updateNote, updateIsFavorite, deleteNote } = useNotes();
   const [title, setTitle] = useState(initialTitle);
   const [annotation, setAnnotation] = useState(initialAnnotation);
   const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
@@ -40,6 +40,10 @@ const Card = ({
   const handleIsFavorite = async () => {
     await updateIsFavorite({ id, isFavorite: !isFavorite });
     setIsFavorite(!isFavorite);
+  };
+
+  const handleDeleteNote = async () => {
+    await deleteNote(id);
   };
   return (
     <div className="card-notes">
@@ -73,7 +77,7 @@ const Card = ({
             </button>
           </div>
           <div className="remove-card-btn">
-            <button className="remove-card">
+            <button className="remove-card" onClick={handleDeleteNote}>
               <IoMdClose />
             </button>
           </div>
