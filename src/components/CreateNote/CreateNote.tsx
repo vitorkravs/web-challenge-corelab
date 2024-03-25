@@ -3,55 +3,21 @@
 //styles
 import "./styles.scss";
 
-//hooks
-import { useState } from "react";
-
-//requisição
-import axios from "axios";
-
 //icons
 import { IoMdStarOutline } from "react-icons/io";
 import { LiaStarSolid } from "react-icons/lia";
+import { useNotes } from "@/context/notesContext";
 
 const CreateNote = () => {
-  const [title, setTitle] = useState("");
-  const [annotation, setAnnotation] = useState("");
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const createNewNote = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await axios
-        .post("http://localhost:3333/api/annotations/post", {
-          title: title,
-          annotation: annotation,
-          is_favorite: isFavorite,
-        })
-        .then(function (response) {
-          console.log(response);
-        });
-      setTitle("");
-      setAnnotation("");
-      setIsFavorite(false);
-    } catch (error) {
-      console.log("erro ao criar nota, ", error);
-    }
-  };
-
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
-
-  const handleAnnotationChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setAnnotation(e.target.value);
-  };
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    console.log(isFavorite);
-  };
+  const {
+    createNewNote,
+    handleAnnotationChange,
+    handleTitleChange,
+    toggleFavorite,
+    title,
+    isFavorite,
+    annotation,
+  } = useNotes();
 
   return (
     <div id="create-note">
