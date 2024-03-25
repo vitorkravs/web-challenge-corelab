@@ -22,6 +22,7 @@ const FavoriteNotes = ({ favoriteNotes }: FavoriteNotesProps) => {
       {favoriteNotes.map((note) => (
         <Card
           key={note.id}
+          id={note.id}
           title={note.title}
           annotation={note.annotation}
           isFavorite={note.isFavorite}
