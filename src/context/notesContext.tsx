@@ -24,6 +24,7 @@ interface UpdateIsFavoriteProps {
 interface NotesContextType {
   notes: Note[];
   getNotes: () => void;
+  deleteNote: (id: string) => Promise<void>;
   createNewNote: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   updateNote: ({ id, title, annotation, isFavorite }: Note) => Promise<void>;
   title: string;
@@ -134,10 +135,22 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     setIsFavorite(!isFavorite);
   };
 
+  const deleteNote = async (id: string) => {
+    try {
+      const response = await axios.delete(
+        `http://192.168.2.105:3333/api/notes/delete/${id}`
+      );
+      getNotes();
+    } catch (error) {
+      console.error("Erro ao atualizar", error);
+    }
+  };
+
   const value = {
     getNotes,
     createNewNote,
     updateNote,
+    deleteNote,
     notes,
     title,
     annotation,
