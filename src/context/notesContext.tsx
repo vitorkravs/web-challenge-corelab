@@ -77,7 +77,9 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   useEffect(() => {
     if (searchTerm === "") {
       setFilteredNotes(notes);
-      setFilteredFavoriteNotes(notes);
+
+      const notesFavorite = notes.filter((note) => note.isFavorite);
+      setFilteredFavoriteNotes(notesFavorite);
     } else {
       // Filtra as notas baseado no searchTerm
       const filtered = notes.filter(
@@ -165,6 +167,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
           isFavorite,
         }
       );
+      console.log(response.status, response.data);
       getNotes();
     } catch (error) {
       console.error("Erro ao atualizar", error);
