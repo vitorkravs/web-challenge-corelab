@@ -48,6 +48,7 @@
           color: #455a64;
           font-size: 1.8rem;
           background-clip: content-box;
+          cursor: pointer;
         }
 
         .toggle-favorite:hover {
@@ -61,10 +62,11 @@
       margin-bottom: 0.5rem;
       border: none;
       font-size: 1rem;
+      resize: none;
     }
     #create-note-btn-container {
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       padding-right: 1rem;
       padding-bottom: 0.5rem;
 

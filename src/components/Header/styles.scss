@@ -50,8 +50,12 @@
           border: none;
           color: #9a9a9a;
           background-color: transparent;
-          width: 10%;
+          width: max-content;
           text-align: end;
+        }
+
+        .icon-search:hover {
+          cursor: pointer;
         }
       }
     }

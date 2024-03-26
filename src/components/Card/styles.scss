@@ -47,6 +47,7 @@
       .is-favorite-icon-card {
         padding: 1rem 0 1rem 2rem;
         width: 20%;
+        cursor: pointer;
 
         .favorite-note,
         .normal-note {
@@ -84,6 +85,7 @@
           border: none;
           color: #51646e;
           font-size: 1.5rem;
+          cursor: pointer;
         }
 
         .edit-color-card {
@@ -115,6 +117,10 @@
           width: 35px;
           height: 35px;
           border-radius: 50%;
+        }
+
+        .pointer {
+          cursor: pointer;
         }
 
         .bg-color-card-one {
@@ -162,6 +168,7 @@
           border: none;
           color: #51646e;
           font-size: 1.5rem;
+          cursor: pointer;
         }
       }
     }
