@@ -1,5 +1,10 @@
+"use client";
+
 //styles
 import "./styles.scss";
+
+//context
+import { useNotes } from "@/context/notesContext";
 
 //image
 import Image from "next/image";
@@ -9,6 +14,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IoIosSearch } from "react-icons/io";
 
 const Header = () => {
+  const { handleSearchChange } = useNotes();
+
   return (
     <header id="header">
       <div id="logo-search-container">
@@ -22,8 +29,12 @@ const Header = () => {
           <h1>CoreNotes</h1>
         </div>
         <div id="search">
-          <form id="search-annotations">
-            <input type="text" placeholder="Pesquisar notas" />
+          <form id="search-annotations" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="text"
+              placeholder="Pesquisar notas"
+              onChange={handleSearchChange}
+            />
             <button type="submit" aria-label="Fechar">
               <IoIosSearch />
             </button>
