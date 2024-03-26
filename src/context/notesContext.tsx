@@ -75,20 +75,20 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
+    const otherNotes = notes.filter((note) => !note.isFavorite);
+    const notesFavorite = notes.filter((note) => note.isFavorite);
     if (searchTerm === "") {
-      setFilteredNotes(notes);
-
-      const notesFavorite = notes.filter((note) => note.isFavorite);
+      setFilteredNotes(otherNotes);
       setFilteredFavoriteNotes(notesFavorite);
     } else {
       // Filtra as notas baseado no searchTerm
-      const filtered = notes.filter(
+      const filtered = otherNotes.filter(
         (note) =>
           note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
           note.annotation.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
-      const filteredFavorites = notes.filter(
+      const filteredFavorites = notesFavorite.filter(
         (note) =>
           (note.isFavorite &&
             note.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -167,7 +167,6 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
           isFavorite,
         }
       );
-      console.log(response.status, response.data);
       getNotes();
     } catch (error) {
       console.error("Erro ao atualizar", error);
