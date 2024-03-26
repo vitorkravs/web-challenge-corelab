@@ -14,7 +14,7 @@ import { useNotes } from "@/context/notesContext";
 import AllNotes from "../AllNotes/AllNotes";
 
 const ShowNotes = () => {
-  const { notes, getNotes } = useNotes();
+  const { getNotes } = useNotes();
 
   useEffect(() => {
     getNotes();
