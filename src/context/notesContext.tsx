@@ -98,7 +98,6 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
           color,
         }
       );
-      console.log("Nota atualizada:", response.data); //
     } catch (error) {
       console.error("Erro ao atualizar a nota", error);
     }
@@ -113,7 +112,6 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
           isFavorite,
         }
       );
-      console.log("Nota atualizada:", response.data); //
     } catch (error) {
       console.error("Erro ao atualizar a nota", error);
     }
