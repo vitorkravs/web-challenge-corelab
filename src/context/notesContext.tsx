@@ -14,6 +14,7 @@ interface Note {
   title: string;
   annotation: string;
   isFavorite: boolean;
+  color?: string;
 }
 
 interface UpdateIsFavoriteProps {
@@ -37,6 +38,7 @@ interface NotesContextType {
     id,
     isFavorite,
   }: UpdateIsFavoriteProps) => Promise<void>;
+  toggleColor: ({ id, color }: { id: string; color: string }) => Promise<void>;
 }
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
@@ -88,6 +90,19 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     }
   };
 
+  const toggleColor = async ({ id, color }: { id: string; color: string }) => {
+    try {
+      const response = await axios.patch(
+        `http://192.168.2.105:3333/api/notes/toggleColor/${id}`,
+        {
+          color,
+        }
+      );
+      console.log("Nota atualizada:", response.data); //
+    } catch (error) {
+      console.error("Erro ao atualizar a nota", error);
+    }
+  };
   const updateNote = async ({ id, title, annotation, isFavorite }: Note) => {
     try {
       const response = await axios.put(
@@ -138,7 +153,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const deleteNote = async (id: string) => {
     try {
       const response = await axios.delete(
-        `http://192.168.2.105:3333/api/notes/delete/${id}`
+        `http://192.168.2.105:3333/api/notes/toggleColor/${id}`
       );
       getNotes();
     } catch (error) {
@@ -159,6 +174,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     handleTitleChange,
     handleAnnotationChange,
     updateIsFavorite,
+    toggleColor,
   };
 
   return (
