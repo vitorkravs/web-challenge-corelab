@@ -39,6 +39,10 @@ interface NotesContextType {
     isFavorite,
   }: UpdateIsFavoriteProps) => Promise<void>;
   toggleColor: ({ id, color }: { id: string; color: string }) => Promise<void>;
+  searchTerm: string;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  filteredNotes: Note[];
+  filteredFavoriteNotes: Note[];
 }
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
@@ -60,10 +64,42 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const [title, setTitle] = useState("");
   const [annotation, setAnnotation] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredNotes, setFilteredNotes] = useState<Note[]>([]);
+  const [filteredFavoriteNotes, setFilteredFavoriteNotes] = useState<Note[]>(
+    []
+  );
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setFilteredNotes(notes);
+      setFilteredFavoriteNotes(notes);
+    } else {
+      // Filtra as notas baseado no searchTerm
+      const filtered = notes.filter(
+        (note) =>
+          note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          note.annotation.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      const filteredFavorites = notes.filter(
+        (note) =>
+          (note.isFavorite &&
+            note.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          note.annotation.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredNotes(filtered);
+      setFilteredFavoriteNotes(filteredFavorites);
+    }
+  }, [notes, searchTerm]);
 
   const getNotes = async () => {
     try {
-      const response = await axios.get("http://192.168.2.105:3333/api/notes");
+      const response = await axios.get("http://192.168.2.103:3333/api/notes");
       setNotes(response.data);
     } catch (error) {
       console.error("Erro ao buscar notas", error);
@@ -74,7 +110,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://192.168.2.105:3333/api/notes/post",
+        "http://192.168.2.103:3333/api/notes/post",
         {
           title: title,
           annotation: annotation,
@@ -93,7 +129,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const toggleColor = async ({ id, color }: { id: string; color: string }) => {
     try {
       const response = await axios.patch(
-        `http://192.168.2.105:3333/api/notes/toggleColor/${id}`,
+        `http://192.168.2.103:3333/api/notes/toggleColor/${id}`,
         {
           color,
         }
@@ -102,10 +138,11 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
       console.error("Erro ao atualizar a nota", error);
     }
   };
+
   const updateNote = async ({ id, title, annotation, isFavorite }: Note) => {
     try {
       const response = await axios.put(
-        `http://192.168.2.105:3333/api/notes/update/${id}`,
+        `http://192.168.2.103:3333/api/notes/update/${id}`,
         {
           title,
           annotation,
@@ -123,7 +160,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   }: UpdateIsFavoriteProps) => {
     try {
       const response = await axios.patch(
-        `http://192.168.2.105:3333/api/notes/toggleIsFavorite/${id}`,
+        `http://192.168.2.103:3333/api/notes/toggleIsFavorite/${id}`,
         {
           isFavorite,
         }
@@ -151,7 +188,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const deleteNote = async (id: string) => {
     try {
       const response = await axios.delete(
-        `http://192.168.2.105:3333/api/notes/delete/${id}`
+        `http://192.168.2.103:3333/api/notes/delete/${id}`
       );
       getNotes();
     } catch (error) {
@@ -168,11 +205,15 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     title,
     annotation,
     isFavorite,
+    searchTerm,
     toggleFavorite,
     handleTitleChange,
     handleAnnotationChange,
     updateIsFavorite,
     toggleColor,
+    handleSearchChange,
+    filteredNotes,
+    filteredFavoriteNotes,
   };
 
   return (
