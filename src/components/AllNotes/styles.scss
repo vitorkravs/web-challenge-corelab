@@ -25,3 +25,21 @@
     padding: 1rem 6rem;
   }
 }
+
+@media (min-width: 1000px) {
+  #all-notes-container {
+    .all-notes-list-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (min-width: 1900px) {
+  #all-notes-container {
+    .all-notes-list-container {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
