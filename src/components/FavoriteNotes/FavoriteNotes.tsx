@@ -3,25 +3,15 @@ import "./styles.scss";
 
 //components
 import Card from "../Card/Card";
+import { useNotes } from "@/context/notesContext";
 
-interface Note {
-  id: string;
-  title: string;
-  annotation: string;
-  isFavorite: boolean;
-  color?: string;
-}
-
-interface FavoriteNotesProps {
-  favoriteNotes: Note[];
-}
-
-const FavoriteNotes = ({ favoriteNotes }: FavoriteNotesProps) => {
+const FavoriteNotes = () => {
+  const { filteredFavoriteNotes } = useNotes();
   return (
     <div id="favorite-notes-container">
       <h2 id="title-favorite-notes">Favoritas</h2>
       <div className="favorite-notes-list-container">
-        {favoriteNotes.map((note) => (
+        {filteredFavoriteNotes.map((note) => (
           <Card
             key={note.id}
             id={note.id}
