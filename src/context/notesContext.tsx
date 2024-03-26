@@ -153,7 +153,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const deleteNote = async (id: string) => {
     try {
       const response = await axios.delete(
-        `http://192.168.2.105:3333/api/notes/toggleColor/${id}`
+        `http://192.168.2.105:3333/api/notes/delete/${id}`
       );
       getNotes();
     } catch (error) {
