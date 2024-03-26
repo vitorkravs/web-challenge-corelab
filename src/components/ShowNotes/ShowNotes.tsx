@@ -24,10 +24,10 @@ const ShowNotes = () => {
   const allNotes = notes.filter((note) => !note.isFavorite);
 
   return (
-    <>
+    <div id="show-notes-container">
       <FavoriteNotes favoriteNotes={favoriteNotes} />
       <AllNotes notes={allNotes} />
-    </>
+    </div>
   );
 };
 

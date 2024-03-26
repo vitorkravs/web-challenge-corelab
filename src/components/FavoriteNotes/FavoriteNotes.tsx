@@ -9,7 +9,7 @@ interface Note {
   title: string;
   annotation: string;
   isFavorite: boolean;
-  color: string;
+  color?: string;
 }
 
 interface FavoriteNotesProps {
@@ -20,16 +20,18 @@ const FavoriteNotes = ({ favoriteNotes }: FavoriteNotesProps) => {
   return (
     <div id="favorite-notes-container">
       <h2 id="title-favorite-notes">Favoritas</h2>
-      {favoriteNotes.map((note) => (
-        <Card
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          annotation={note.annotation}
-          isFavorite={note.isFavorite}
-          color={note.color}
-        />
-      ))}
+      <div className="favorite-notes-list-container">
+        {favoriteNotes.map((note) => (
+          <Card
+            key={note.id}
+            id={note.id}
+            title={note.title}
+            annotation={note.annotation}
+            isFavorite={note.isFavorite}
+            color={note.color}
+          />
+        ))}
+      </div>
     </div>
   );
 };
