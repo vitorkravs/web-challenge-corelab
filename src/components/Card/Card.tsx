@@ -20,7 +20,7 @@ interface CardProps {
   title: string;
   annotation: string;
   isFavorite: boolean;
-  color: string;
+  color?: string;
 }
 
 const Card = ({
