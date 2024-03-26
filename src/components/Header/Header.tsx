@@ -36,7 +36,7 @@ const Header = () => {
               onChange={handleSearchChange}
             />
             <button type="submit" aria-label="Fechar">
-              <IoIosSearch />
+              <IoIosSearch className="icon-search" />
             </button>
           </form>
         </div>
