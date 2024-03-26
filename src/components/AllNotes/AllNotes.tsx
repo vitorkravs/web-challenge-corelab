@@ -3,25 +3,15 @@ import "./styles.scss";
 
 //components
 import Card from "../Card/Card";
+import { useNotes } from "@/context/notesContext";
 
-interface Note {
-  id: string;
-  title: string;
-  annotation: string;
-  isFavorite: boolean;
-  color?: string;
-}
-
-interface AllNotesProps {
-  notes: Note[];
-}
-
-const AllNotes = ({ notes }: AllNotesProps) => {
+const AllNotes = () => {
+  const { filteredNotes } = useNotes();
   return (
     <div id="all-notes-container">
       <h2 id="title-all-notes">Outras</h2>
       <div className="all-notes-list-container">
-        {notes.map((note) => (
+        {filteredNotes.map((note) => (
           <Card
             key={note.id}
             id={note.id}
