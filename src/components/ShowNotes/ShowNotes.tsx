@@ -20,13 +20,10 @@ const ShowNotes = () => {
     getNotes();
   }, []);
 
-  const favoriteNotes = notes.filter((note) => note.isFavorite);
-  const allNotes = notes.filter((note) => !note.isFavorite);
-
   return (
     <div id="show-notes-container">
-      <FavoriteNotes favoriteNotes={favoriteNotes} />
-      <AllNotes notes={allNotes} />
+      <FavoriteNotes />
+      <AllNotes />
     </div>
   );
 };
