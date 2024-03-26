@@ -9,6 +9,7 @@ interface Note {
   title: string;
   annotation: string;
   isFavorite: boolean;
+  color: string;
 }
 
 interface AllNotesProps {
@@ -26,6 +27,7 @@ const AllNotes = ({ notes }: AllNotesProps) => {
           title={note.title}
           annotation={note.annotation}
           isFavorite={note.isFavorite}
+          color={note.color}
         />
       ))}
     </div>
