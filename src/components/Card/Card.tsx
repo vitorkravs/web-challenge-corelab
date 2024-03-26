@@ -95,51 +95,51 @@ const Card = ({
             style={editColor ? { display: "grid" } : { display: "none" }}
           >
             <div
-              className="bg-color-card bg-color-card-one"
+              className="bg-color-card bg-color-card-one pointer"
               onClick={() => handleChangeBackgroundColor("#bae2ff")}
             />
             <div
-              className="bg-color-card bg-color-card-two"
+              className="bg-color-card bg-color-card-two pointer"
               onClick={() => handleChangeBackgroundColor("#b9ffdd")}
             />
             <div
-              className="bg-color-card bg-color-card-three"
+              className="bg-color-card bg-color-card-three pointer"
               onClick={() => handleChangeBackgroundColor("#ffe8ac")}
             />
             <div
-              className="bg-color-card bg-color-card-four"
+              className="bg-color-card bg-color-card-four pointer"
               onClick={() => handleChangeBackgroundColor("#ffcab9")}
             />
             <div
-              className="bg-color-card bg-color-card-five"
+              className="bg-color-card bg-color-card-five pointer"
               onClick={() => handleChangeBackgroundColor("#f99494")}
             />
             <div
-              className="bg-color-card bg-color-card-six"
+              className="bg-color-card bg-color-card-six pointer"
               onClick={() => handleChangeBackgroundColor("#9dd6ff")}
             />
             <div
-              className="bg-color-card bg-color-card-seven"
+              className="bg-color-card bg-color-card-seven pointer"
               onClick={() => handleChangeBackgroundColor("#eca1ff")}
             />
             <div
-              className="bg-color-card bg-color-card-eight"
+              className="bg-color-card bg-color-card-eight pointer"
               onClick={() => handleChangeBackgroundColor("#daff8b")}
             />
             <div
-              className="bg-color-card bg-color-card-nine"
+              className="bg-color-card bg-color-card-nine pointer"
               onClick={() => handleChangeBackgroundColor("#ffa285")}
             />
             <div
-              className="bg-color-card bg-color-card-ten"
+              className="bg-color-card bg-color-card-ten pointer"
               onClick={() => handleChangeBackgroundColor("#CDCDCD")}
             />
             <div
-              className="bg-color-card bg-color-card-twelve"
+              className="bg-color-card bg-color-card-twelve pointer"
               onClick={() => handleChangeBackgroundColor("#979797")}
             />
             <div
-              className="bg-color-card bg-color-card-thirteen"
+              className="bg-color-card bg-color-card-thirteen pointer"
               onClick={() => handleChangeBackgroundColor("#fff")}
             />
           </div>
