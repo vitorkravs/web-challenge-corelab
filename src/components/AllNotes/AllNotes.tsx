@@ -7,6 +7,20 @@ import { useNotes } from "@/context/notesContext";
 
 const AllNotes = () => {
   const { filteredNotes } = useNotes();
+
+  if (
+    filteredNotes === null ||
+    filteredNotes === undefined ||
+    filteredNotes.length === 0
+  ) {
+    return (
+      <div id="all-notes-container">
+        <h2 id="title-all-notes">Outras</h2>
+        <div>Carregando...</div>
+      </div>
+    );
+  }
+
   return (
     <div id="all-notes-container">
       <h2 id="title-all-notes">Outras</h2>
