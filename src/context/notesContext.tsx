@@ -101,7 +101,9 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
 
   const getNotes = async () => {
     try {
-      const response = await axios.get("http://192.168.2.103:3333/api/notes");
+      const response = await axios.get(
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes`
+      );
       setNotes(response.data);
     } catch (error) {
       console.error("Erro ao buscar notas", error);
@@ -112,7 +114,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://192.168.2.103:3333/api/notes/post",
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes/post`,
         {
           title: title,
           annotation: annotation,
@@ -131,7 +133,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const toggleColor = async ({ id, color }: { id: string; color: string }) => {
     try {
       const response = await axios.patch(
-        `http://192.168.2.103:3333/api/notes/toggleColor/${id}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes/toggleColor/${id}`,
         {
           color,
         }
@@ -144,7 +146,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const updateNote = async ({ id, title, annotation, isFavorite }: Note) => {
     try {
       const response = await axios.put(
-        `http://192.168.2.103:3333/api/notes/update/${id}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes/update/${id}`,
         {
           title,
           annotation,
@@ -162,7 +164,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   }: UpdateIsFavoriteProps) => {
     try {
       const response = await axios.patch(
-        `http://192.168.2.103:3333/api/notes/toggleIsFavorite/${id}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes/toggleIsFavorite/${id}`,
         {
           isFavorite,
         }
