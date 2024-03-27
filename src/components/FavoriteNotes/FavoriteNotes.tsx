@@ -15,8 +15,8 @@ const FavoriteNotes = () => {
   ) {
     return (
       <div id="favorite-notes-container">
-        <h2 id="title-favorite-notes">Outras</h2>
-        <div>Carregando...</div>
+        <h2 id="title-favorite-notes">Favoritas</h2>
+        <div>Nenhuma nota favorita</div>
       </div>
     );
   }

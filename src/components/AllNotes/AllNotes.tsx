@@ -16,7 +16,7 @@ const AllNotes = () => {
     return (
       <div id="all-notes-container">
         <h2 id="title-all-notes">Outras</h2>
-        <div>Carregando...</div>
+        <div>Nenhuma nota</div>
       </div>
     );
   }
