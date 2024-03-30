@@ -26,7 +26,7 @@ Clone o Repositório
 Clone este repositório para sua máquina local usando:
 
 ```bash
-git clone https://github.com/seuusuario/seuprojeto.git
+git clone https://github.com/seuusuario/seuprojeto.git](https://github.com/vitorkravs/web-challenge-corelab.git
 ```
 
 Instale as Dependências
