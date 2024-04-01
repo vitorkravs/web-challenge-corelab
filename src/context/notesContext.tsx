@@ -192,7 +192,7 @@ export const NotesProvider: React.FC<NotesProviderProps> = ({ children }) => {
   const deleteNote = async (id: string) => {
     try {
       const response = await axios.delete(
-        `http://192.168.2.103:3333/api/notes/delete/${id}`
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/notes/delete/${id}`
       );
       getNotes();
     } catch (error) {
